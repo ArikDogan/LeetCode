@@ -1,0 +1,24 @@
+bool isPalindrome(int x){
+    int i, j, counter, keeper;
+    keeper = x;
+    if(x < 0){
+        return false;    
+    }
+    for(counter = 0; keeper != 0; counter++){
+        keeper = keeper / 10;
+    }
+    int *arr = (int*) malloc(sizeof(int)* counter);
+    keeper = x;
+    for(i = 0; keeper != 0; i++){
+        arr[i] = keeper % 10;
+        keeper = keeper / 10;
+    }
+    
+    for(i = 0, j = counter - 1; i <= j ; i++, j--){
+        if(arr[i] != arr[j]){
+            return false;
+        }
+    }
+    return true;
+    
+}
