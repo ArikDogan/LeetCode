@@ -1,0 +1,33 @@
+int removeDuplicates(int* nums, int numsSize){
+    int i, j, k, counter = 0, keeper;
+    
+    for(i = 0, k = 0; i < numsSize;){
+        keeper = nums[i];
+        for(j = i + 1; j < numsSize; j++){
+            if(nums[j] == keeper){
+                nums[j] = -101;
+            }
+            else{
+                break;
+            }
+        }
+        if(i != 0 && i != k){
+            nums[k] = nums[i];
+            nums[i] = -101;
+            i = j;
+            k++;
+        }
+        else{
+            i = j;
+            k++;
+        }
+    }
+    
+    for(i = 0; i < numsSize; i++){
+        if(nums[i] != -101){
+            counter = counter + 1;
+        }
+    }
+    
+    return counter;
+}
