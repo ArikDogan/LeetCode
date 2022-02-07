@@ -1,0 +1,46 @@
+int* plusOne(int* digits, int digitsSize, int* returnSize){
+    int reminder, last_num, i = digitsSize - 1;
+
+    last_num = digits[digitsSize - 1] + 1;
+    int *new_digits = (int *) malloc(sizeof(int)* digitsSize);
+
+    if(last_num == 10){
+        reminder = 1;
+        while(reminder == 1){
+            reminder = 0;
+            if(i != 0){
+                digits[i] = 0;
+                i--;
+                last_num = digits[i] + 1;
+                if(last_num == 10){
+                    reminder = 1;
+                }
+            }
+        }
+        last_num = digits[i] + 1;
+        if(last_num == 10){
+            new_digits = (int *) realloc(new_digits, sizeof(int)* (digitsSize + 1));
+            *returnSize = digitsSize + 1;
+            new_digits[0] = 1;
+            for(int j = 1; j < *returnSize; j++){
+                new_digits[j] = 0;
+            }
+            return new_digits;
+        }
+        else{
+            *returnSize = digitsSize;
+            digits[i] = digits[i] + 1;
+            for(int j = 0; j < digitsSize; j++){
+                new_digits[j] = digits[j];
+            }
+        }
+    }
+    else{
+        *returnSize = digitsSize;
+        digits[i] = digits[i] + 1;
+        for(int j = 0; j < digitsSize; j++){
+            new_digits[j] = digits[j];
+        }
+    }
+    return new_digits;
+}
