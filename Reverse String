@@ -1,0 +1,13 @@
+
+
+void reverseString(char* s, int sSize){
+    int i = 0, j = sSize - 1;
+    char keeper;
+    while(i < j){
+        keeper = s[i];
+        s[i] = s[j];
+        s[j] = keeper;
+        i++;
+        j--;
+    }
+}
