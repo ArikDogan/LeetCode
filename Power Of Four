@@ -1,0 +1,9 @@
+bool isPowerOfFour(int n){
+    long int num;
+    for(num = 1; num * 4 <= n; num = num * 4);
+    if(num == n){
+        return true;
+
+    }
+    return false;
+}
